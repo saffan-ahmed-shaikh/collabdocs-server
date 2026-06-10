@@ -1,0 +1,41 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --exec ts-node src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "migration:generate": "typeorm-ts-node-commonjs migration:generate src/migrations/AutoMigration -d src/config/database.ts",
+    "migration:run": "typeorm-ts-node-commonjs migration:run -d src/config/database.ts",
+    "migration:revert": "typeorm-ts-node-commonjs migration:revert -d src/config/database.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "lib0": "^0.2.117",
+    "pg": "^8.21.0",
+    "reflect-metadata": "^0.2.2",
+    "socket.io": "^4.8.3",
+    "typeorm": "^1.0.0",
+    "y-protocols": "^1.0.7",
+    "yjs": "^13.6.31"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^25.9.2",
+    "@types/pg": "^8.20.0",
+    "nodemon": "^3.1.14",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.3"
+  }
+}
