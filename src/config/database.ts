@@ -10,7 +10,14 @@ export const AppDataSource = new DataSource({
   url: process.env.DATABASE_URL,
   synchronize: false,
   logging: false,
-  entities: [User, Document, DocumentCollaborator],
-  migrations: ["src/migrations/*.ts"],
-  subscribers: [],
+  entities:
+    process.env.NODE_ENV === "production"
+      ? ["dist/entities/*.js"]
+      : [User, Document, DocumentCollaborator],
+  migrations: [
+    process.env.NODE_ENV === "production"
+      ? "dist/migrations/*.js"
+      : "src/migrations/*.ts",
+  ],
+  ssl: false, // EC2 local postgres doesn't need SSL
 });
